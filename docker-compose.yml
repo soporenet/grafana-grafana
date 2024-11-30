@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  grafana:
+    image: docker.io/grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=changeme
+    restart: unless-stopped
+    networks:
+      - monitoring-network
+
+networks:
+  monitoring-network:
+    driver: bridge
